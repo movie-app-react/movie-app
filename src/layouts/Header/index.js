@@ -8,24 +8,32 @@ import Menu from "../Menu/";
 import { Link } from "react-router-dom";
 const cn = classNames.bind(Styles);
 const Header = () => {
-  const [showMenu,setShowMenu] = useState(true)
-  const handleClickBtn = () => setShowMenu(curren => !curren)
+  const [showMenu, setShowMenu] = useState(false);
+  const handleClickBtn = () => setShowMenu((prev) => !prev);
+
+  // console.log('click:' + showMenu)
   return (
     <div className={cn("wrapper")}>
       <div className={cn("Header")}>
         <div className={cn("container")}>
           <div className={cn("wrap")}>
-            <div className={cn('logo-and-menu')}>
+            <div className={cn("logo-and-menu")}>
               <div className={cn("logo-header")}>
-                <Link to='/'>
+                <Link to="/">
                   <FontAwesomeIcon className={cn("icon-logo")} icon={faFilm} />
                   <h1>Phim mới</h1>
                 </Link>
                 <p>Xem phim trực tuyến chất lượng cao</p>
               </div>
               {/* --menu-mobile */}
-              <div className={cn("Menu_mb" ,`${showMenu? "active-menu-mobile":''}`)} onClick={handleClickBtn}>
-                <div className={cn('btn-menu')}>
+              <div
+                className={cn(
+                  "Menu_mb",
+                  `${showMenu ? "active-menu-mobile" : ""}`
+                )}
+                onClick={handleClickBtn}
+              >
+                <div className={cn("btn-menu")}>
                   <div>
                     <span></span>
                   </div>
@@ -35,7 +43,7 @@ const Header = () => {
                   <div>
                     <span></span>
                   </div>
-                </div> 
+                </div>
               </div>
               {/*  */}
             </div>
@@ -48,7 +56,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-        <Menu showMenu />
+      <Menu showMenu={showMenu} />
     </div>
   );
 };
